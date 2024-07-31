@@ -131,7 +131,7 @@ Body Section Styles
 }
 
 .jobs-list{
-	width: 270px;
+	width: 350px;
 	margin: 0 5px 30px 0px;
 	height: 100%;
 	display: inline-block;
@@ -238,4 +238,40 @@ h2.jobs-list-heading{
 	font-size: 10px;
 	color: rgba(0,0,0,0.6);
 	font-weight: 700;
+}
+
+
+/* new style */
+
+.createBox {
+	width: 22rem;
+    height: 6rem;
+    font-size: 2rem;
+    border-radius: 5px;
+    border: none;
+    background: #4CAF50;
+}
+
+.createElement {
+	width: 13rem;
+    height: 4rem;
+    border: none;
+    border-radius: 5px;
+    background: green;
+    left: 1rem;
+    position: relative;
+}
+
+.removeElement {
+	width: 13rem;
+    height: 4rem;
+    border: none;
+    border-radius: 5px;
+    left: 2rem;
+    position: relative;
+    background: red;
+}
+
+li {
+	list-style-type: none;
 }
