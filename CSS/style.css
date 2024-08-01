@@ -269,6 +269,6 @@ li {
   list-style-type: none;
 }
 
-.draggable {
+.dragging {
   opacity: .5;
 }

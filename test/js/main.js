@@ -48,6 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  // Create Box
+
   const createBox = () => {
     const jobsListWrapper = initializeBodySection();
     initializeHeader();
@@ -66,12 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
     jobBlock.classList.add("job-block");
     jobBlock.id = "new-jobs-test";
     jobBlock.setAttribute("draggable", "true");
-    jobBlock.addEventListener("dragstart", () => {
-      jobBlock.classList.add("dragging");
-    });
-    jobBlock.addEventListener("dragend", () => {
-      jobBlock.classList.remove("dragging");
-    });
 
     const jobNameBlock = document.createElement("div");
     jobNameBlock.classList.add("job-name-block");
@@ -103,6 +99,24 @@ document.addEventListener("DOMContentLoaded", () => {
     removeElement.classList.add("removeElement");
     removeElement.textContent = "Remove Element";
 
+    // Drag and drop
+
+    jobBlock.addEventListener("dragstart", () => {
+      jobBlock.classList.add("dragging");
+    });
+
+    jobBlock.addEventListener("dragend", () => {
+      jobBlock.classList.remove("dragging");
+    });
+
+    jobsListBody.addEventListener("dragover", (event) => {
+      event.preventDefault();
+      const draggedElement = document.querySelector(".dragging");
+      jobsListBody.appendChild(draggedElement);
+    });
+
+    // Append Child
+
     jobsList.appendChild(jobsListHeading);
     jobsList.appendChild(jobsListBody);
     jobBlock.appendChild(jobNameBlock);
@@ -117,6 +131,8 @@ document.addEventListener("DOMContentLoaded", () => {
     jobsListWrapper.appendChild(jobsList);
   };
 
+  // Create Element
+
   const createElement = (event) => {
     const buttonClicked = event.target;
     const jobsListBody = buttonClicked
@@ -126,6 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const jobBlock = document.createElement("div");
     jobBlock.classList.add("job-block");
     jobBlock.setAttribute("draggable", "true");
+
     jobBlock.addEventListener("dragstart", () => {
       jobBlock.classList.add("dragging");
     });
