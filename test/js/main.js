@@ -62,11 +62,16 @@ document.addEventListener("DOMContentLoaded", () => {
     jobsListBody.classList.add("jobs-list-body");
     jobsListBody.id = "new-jobs";
 
-    const li = document.createElement("li");
-
     const jobBlock = document.createElement("div");
     jobBlock.classList.add("job-block");
     jobBlock.id = "new-jobs-test";
+    jobBlock.setAttribute("draggable", "true");
+    jobBlock.addEventListener("dragstart", () => {
+      jobBlock.classList.add("dragging");
+    });
+    jobBlock.addEventListener("dragend", () => {
+      jobBlock.classList.remove("dragging");
+    });
 
     const jobNameBlock = document.createElement("div");
     jobNameBlock.classList.add("job-name-block");
@@ -98,11 +103,8 @@ document.addEventListener("DOMContentLoaded", () => {
     removeElement.classList.add("removeElement");
     removeElement.textContent = "Remove Element";
 
-    jobsListWrapper.appendChild(jobsList);
     jobsList.appendChild(jobsListHeading);
     jobsList.appendChild(jobsListBody);
-    jobsListBody.appendChild(li);
-    li.appendChild(jobBlock);
     jobBlock.appendChild(jobNameBlock);
     jobNameBlock.appendChild(jobName);
     jobBlock.appendChild(jobInfoBlock);
@@ -111,15 +113,25 @@ document.addEventListener("DOMContentLoaded", () => {
     jobsList.appendChild(jobsListFooter);
     jobsListFooter.appendChild(createElementButton);
     jobsListFooter.appendChild(removeElement);
+
+    jobsListWrapper.appendChild(jobsList);
   };
 
-  const createElement = () => {
-    const jobsListBody = document.querySelector(".jobs-list-body");
-
-    const li = document.createElement("li");
+  const createElement = (event) => {
+    const buttonClicked = event.target;
+    const jobsListBody = buttonClicked
+      .closest(".jobs-list")
+      .querySelector(".jobs-list-body");
 
     const jobBlock = document.createElement("div");
     jobBlock.classList.add("job-block");
+    jobBlock.setAttribute("draggable", "true");
+    jobBlock.addEventListener("dragstart", () => {
+      jobBlock.classList.add("dragging");
+    });
+    jobBlock.addEventListener("dragend", () => {
+      jobBlock.classList.remove("dragging");
+    });
 
     const jobNameBlock = document.createElement("div");
     jobNameBlock.classList.add("job-name-block");
@@ -139,13 +151,13 @@ document.addEventListener("DOMContentLoaded", () => {
     userEmail.classList.add("user-email");
     userEmail.textContent = "newuser@example.com";
 
-    jobsListBody.appendChild(li);
-    li.appendChild(jobBlock);
     jobBlock.appendChild(jobNameBlock);
     jobNameBlock.appendChild(jobName);
     jobBlock.appendChild(jobInfoBlock);
     jobInfoBlock.appendChild(jobDate);
     jobInfoBlock.appendChild(userEmail);
+
+    jobsListBody.appendChild(jobBlock);
   };
 
   const createBoxButton = document.createElement("button");

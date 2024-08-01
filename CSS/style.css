@@ -268,3 +268,7 @@ h2.jobs-list-heading {
 li {
   list-style-type: none;
 }
+
+.draggable {
+  opacity: .5;
+}
