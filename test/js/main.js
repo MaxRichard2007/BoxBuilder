@@ -49,7 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // Create Box
-
   const createBox = () => {
     const jobsListWrapper = initializeBodySection();
     initializeHeader();
@@ -95,12 +94,15 @@ document.addEventListener("DOMContentLoaded", () => {
     createElementButton.textContent = "Create Element";
     createElementButton.addEventListener("click", createElement);
 
-    const removeElement = document.createElement("button");
-    removeElement.classList.add("removeElement");
-    removeElement.textContent = "Remove Element";
-
+    const removeElementBtn = document.createElement("button");
+    removeElementBtn.classList.add("removeElement");
+    removeElementBtn.textContent = "Remove Element";
+    removeElementBtn.addEventListener("click", (e) => {
+      const jobBlock = document.querySelector(".job-block");
+      jobBlock.remove();
+    });
+    
     // Drag and drop
-
     jobBlock.addEventListener("dragstart", () => {
       jobBlock.classList.add("dragging");
     });
@@ -116,7 +118,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Append Child
-
     jobsList.appendChild(jobsListHeading);
     jobsList.appendChild(jobsListBody);
     jobBlock.appendChild(jobNameBlock);
@@ -126,13 +127,12 @@ document.addEventListener("DOMContentLoaded", () => {
     jobInfoBlock.appendChild(userEmail);
     jobsList.appendChild(jobsListFooter);
     jobsListFooter.appendChild(createElementButton);
-    jobsListFooter.appendChild(removeElement);
+    jobsListFooter.appendChild(removeElementBtn);
 
     jobsListWrapper.appendChild(jobsList);
   };
 
   // Create Element
-
   const createElement = (event) => {
     const buttonClicked = event.target;
     const jobsListBody = buttonClicked
@@ -173,7 +173,6 @@ document.addEventListener("DOMContentLoaded", () => {
     jobBlock.appendChild(jobInfoBlock);
     jobInfoBlock.appendChild(jobDate);
     jobInfoBlock.appendChild(userEmail);
-
     jobsListBody.appendChild(jobBlock);
   };
 
