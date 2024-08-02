@@ -96,9 +96,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const removeElementBtn = document.createElement("button");
     removeElementBtn.classList.add("removeElement");
     removeElementBtn.textContent = "Remove Element";
-    removeElementBtn.addEventListener("click", (e) => {
+    removeElementBtn.addEventListener("click", () => {
       const jobBlock = document.querySelector(".job-block");
-      jobBlock.remove();
+      if (jobBlock) {
+        jobBlock.remove();
+      }
     });
 
     // Drag and drop
@@ -113,7 +115,9 @@ document.addEventListener("DOMContentLoaded", () => {
     jobsListBody.addEventListener("dragover", (event) => {
       event.preventDefault();
       const draggedElement = document.querySelector(".dragging");
-      jobsListBody.appendChild(draggedElement);
+      if (draggedElement) {
+        jobsListBody.appendChild(draggedElement);
+      }
     });
 
     // Append Child
@@ -186,7 +190,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const removeBoxButton = document.createElement("button");
     removeBoxButton.classList.add("removeBox");
-    removeBoxButton.innerHTML = "Remove Box";
+    removeBoxButton.textContent = "Remove Box";
+    removeBoxButton.addEventListener("click", () => {
+      const jobsList = document.querySelector(".jobs-list");
+      jobsList.remove();
+    });
 
     cardBtn.appendChild(createBoxButton);
     cardBtn.appendChild(removeBoxButton);

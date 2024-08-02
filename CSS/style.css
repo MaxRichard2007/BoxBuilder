@@ -40,12 +40,6 @@ ul {
   justify-content: flex-start;
 }
 
-.top-bar-block.center {
-}
-
-.top-bar-block.right {
-}
-
 .top-bar-logo {
   height: 30px;
   margin-left: auto;
@@ -114,25 +108,23 @@ Body Section Styles
 
 .jobs-list-wrapper {
   display: flex;
-  flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: stretch;
-  align-content: stretch;
-  height: 50rem;
-  overflow-x: auto;
-  width: 100vw;
+  overflow-x: auto; 
+  white-space: nowrap;
+  padding: 16px; 
 }
 
 .jobs-list {
   width: 350px;
   margin: 0 5px 30px 0px;
   height: 100%;
-  display: inline-block;
   vertical-align: top;
   white-space: nowrap;
   background-color: #e2e4e6;
   border-radius: 5px;
+  display: inline-flex;
+  flex-direction: column;
+  margin-right: 16px;
 }
 
 h2.jobs-list-heading {
