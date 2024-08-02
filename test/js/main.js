@@ -44,14 +44,13 @@ document.addEventListener("DOMContentLoaded", () => {
       headerTopBar.appendChild(topBarBlockRight);
       headerSection.appendChild(headerTopBar);
 
-      bodySection.prepend(headerSection);
+      document.body.prepend(headerSection);
     }
   };
 
   // Create Box
   const createBox = () => {
     const jobsListWrapper = initializeBodySection();
-    initializeHeader();
 
     const jobsList = document.createElement("div");
     jobsList.classList.add("jobs-list");
@@ -101,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const jobBlock = document.querySelector(".job-block");
       jobBlock.remove();
     });
-    
+
     // Drag and drop
     jobBlock.addEventListener("dragstart", () => {
       jobBlock.classList.add("dragging");
@@ -176,9 +175,25 @@ document.addEventListener("DOMContentLoaded", () => {
     jobsListBody.appendChild(jobBlock);
   };
 
-  const createBoxButton = document.createElement("button");
-  createBoxButton.classList.add("createBox");
-  createBoxButton.textContent = "Create Box";
-  createBoxButton.addEventListener("click", createBox);
-  document.body.appendChild(createBoxButton);
+  const card = () => {
+    const cardBtn = document.createElement("div");
+    cardBtn.classList.add("card");
+
+    const createBoxButton = document.createElement("button");
+    createBoxButton.classList.add("createBox");
+    createBoxButton.textContent = "Create Box";
+    createBoxButton.addEventListener("click", createBox);
+
+    const removeBoxButton = document.createElement("button");
+    removeBoxButton.classList.add("removeBox");
+    removeBoxButton.innerHTML = "Remove Box";
+
+    cardBtn.appendChild(createBoxButton);
+    cardBtn.appendChild(removeBoxButton);
+    document.body.appendChild(cardBtn);
+  };
+
+  initializeHeader();
+  initializeBodySection();
+  card();
 });
